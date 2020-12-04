@@ -1,5 +1,5 @@
-## 연세대학교 빅데이터 동아리 YBIGTA DataEngineering Team
-- 기간 : 2020.07 ~ 2021.07 (1년)
+## 연세대학교 빅데이터 동아리 YBIGTA : DataEngineering Team
+- 활동기간 : 2020.07 ~ 2021.07 (1년)
 
 ### 2020 여름방학 
 - 팀세션 주 1회 (선배들의 발제)
@@ -27,3 +27,7 @@
     - docker
     - spark streaming
     - spark ML
+    
+### 2020-2021 겨울방학
+
+### 2021-1학기
