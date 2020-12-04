@@ -16,5 +16,14 @@
         - 도커 파일 빌드
         - 도커 프로세스 동작방식
 
-### 2020-2
-- 팀세션
+### 2020-2학기
+- 팀세션 주 1회 (선배들의 발제)
+    - aws ec2
+    - hadoop/spark basic
+    - spark data source/file system basic
+    - low-level API : RDD
+    - structured API : DataFrame, Dataset
+    - Spark programming
+    - docker
+    - spark streaming
+    - spark ML
