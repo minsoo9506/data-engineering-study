@@ -1,3 +1,5 @@
+# Data Engineering study
+
 ## 연세대학교 빅데이터 동아리 YBIGTA : DataEngineering Team
 - 활동기간 : 2020.07 ~ 2021.07 (1년)
 
@@ -29,5 +31,6 @@
     - spark ML
     
 ### 2020-2021 겨울방학
+- hadoop study
 
 ### 2021-1학기
