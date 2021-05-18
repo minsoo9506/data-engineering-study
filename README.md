@@ -31,6 +31,6 @@
     - spark ML
     
 ### 2020-2021 겨울방학
-- hadoop study
+- hadoop 이론 study
+- SQL 
 
-### 2021-1학기
