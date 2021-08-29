@@ -2,7 +2,7 @@
   - fast
   - small memory
 
-## Foundations for efficiencies
+### Foundations for efficiencies
 - Building with built-in
   - built-in type : `list`, `tuple`, `set`, `dict` ...
   - built-in function , module
@@ -54,7 +54,7 @@ print(names_uppercase)
   - indexing : 특히 차원이 높아지면 유용
   - boolean indexing
 
-## Timing and profiling code
+### Timing and profiling code
 - examining runtime
   - IPython에서 사용하는 경우
     - `%timeit` : 한 줄 단위 측정
@@ -78,7 +78,7 @@ print(names_uppercase)
 %mprun -f 함수이름 함수실행
 ```
 
-## Gaining efficiencies
+### Gaining efficiencies
 - combining, counting, iterating
   - `zip` 함수
   - `collections` 모듈
@@ -90,7 +90,7 @@ print(names_uppercase)
 - Eliminating loops
   - built-in, numpy 를 이용하여 loop 계산을 최대한 없애자
 
-## Basic pandas optimizations
+### Basic pandas optimizations
 - `.iterrows()`
 
 ```python
