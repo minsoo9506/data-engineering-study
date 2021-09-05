@@ -119,4 +119,58 @@ class Manager(Employee):
 ```
 
 ## Integrating with Standard Python
+### Operator overloading : comparision
+- `__eq__()`
+  - `==`을 사용할때 불려진다.
+  - 같은 class에서 만들어진 instance들의 변수들이 같은 값을 갖고 있어도 `==`으로 비교하면 무조건 `False`가 나온다.
+  - 그런데 instance의 변수가 같은 경우에 둘이 같다고 하고 싶은 경우 (또는 원하는 조건 아무거나) `def __eq__(self, arg~)`로 overloading하면 된다.
+### Operator overloading : string representation
+- `__str__()` vs `__repr__()`
+  - `__str__()` 
+    - `print(obj)`, `str(obj)`
+    - informal, for end user
+    - string representation
+  - `__repr__()`
+    - `repr(obj)`
+    - formal, for developer
+    - reproducible representation
+- 둘 다 `print(instance이름)` 했을 때, 나오는 결과를 정할 수 있다.
+### Exception
+- `try` - `except` - `finally`
+  - `except`는 여러 개 쓸 수 있다.
+  - `finally`는 optional
+- `Exception`을 상속받아서 원하는 custom exception을 만들 수 ㅣ있다.
 ## Best Practices of Class Design
+### Designing for inheritance and polymorphism
+- *Base class should be interchangeable with any of its subclasses without altering any properties of the program*
+### Managing data acsess
+- python에서 모든 class data는 public이다.
+- restricting access
+  - Naming convention
+  - use `@property` to customize access
+  - overriding `__getattr__()` and `__setattr__()`
+- Naming convention
+  - `_`으로 시작하면 class 내부에서만 쓰이는 것으로 약속!
+  - `__`으로 시작하면 private, not inherited
+- Properties
+  - attribute를 바꿀때 직접 바꾸는 것보다 함수를 통해 바꾸는 것이 안전하다. attribute를 read only만 가능하게 하는게 좋다.
+
+```python
+class Person:
+  def __init__(self, name, salary):
+    self._salary = salary
+
+  @property
+  def salary(self):
+    return self._salary
+
+  @salary.setter
+  def salary(self, new_salary):
+    if new_salary < 0:
+      raise ValueError("Salary is too small!")
+    self._salary = new_salary
+```
+- 일단 보호할 attribute를 `_`을 붙인다.
+- attribute와 동일한 이름의 method를 만들고 `@property`를 붙인다. 해당 attribute를 instance가 read할 때 사용된다.
+-  attribute와 동일한 이름의 method를 만들고 `@attr.setter`를 붙인다. 해당 attribute를 수정할 때 사용되는 것이다. 예시처럼 조건을 걸어 안전하게 수정할 수 있다.
+`@property`부분은 만들고 setter함수를 안만들면 read only만 가능하다.
