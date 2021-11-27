@@ -99,6 +99,45 @@ SELECT * FROM REVIEWS
 WHERE score > 9;
 ```
 ### Managing Views
-- 
+- 다양한 sql연산자를 통해 views를 만들 수 있다.
+- update a view
+  - `UPDATE films SET kind='Dramatic' WHERE kind='Drama'`
+- Dropping a view
+  - `DROP VIEW view_name [ CASCADE | RESTRICT ]`
+  - `[ CASCADE | RESTRICT ]`는 option
+
+### Materialized view
+- query를 저장하는 것이 아니라 query의 결과를 저장하는 것
+  - 반대는 non-materialized view
+- 주로 언제?
+  - query 실행시간이 너무 긴 경우
+  - query result가 자주 바뀌지 않는 경우
+- PostgreSQL
+  - `CREATE MATERIALIZED VIEW my_mv AS SELECT * FROM existing_table`
 
 ## Database Management
+
+### Database roles and access control
+- DB roles
+  - database access에 대한 permission을 manage
+- create a role
+```sql
+-- Group role
+CREATE ROLE data_analyst
+-- User role
+CREATE ROLE intern WITH PASSWORD 'passwordForIntern' VALID UNTIL '2020-01-01'
+``` 
+
+### Table partitioning
+- 왜 나눠야할까?
+  - 데이터가 크면 query가 엄~청 느려진다.
+- vertical partitioning
+  - 일반적으로 우리가 알고 있는 key가 있고 나눠지는 것
+  - normalization이랑 비슷하지만 다르겠다.
+- Horizontal partitioning
+  - row들을 나누는 것
+
+### Data integration
+
+### Picking a DBMS
+- SQL or NoSQL
