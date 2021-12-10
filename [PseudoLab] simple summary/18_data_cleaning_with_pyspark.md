@@ -80,7 +80,82 @@ user_df = user_df.withColumn('ReverseName', udfReverseString(user_df.Name))
   - parquet 사용하자.
 
 ## Cluster configurations
+- configuration
+```python
+# Name of the Spark application instance
+app_name = spark.conf.get('spark.app.name')
+
+# Driver TCP port
+driver_tcp_port = spark.conf.get('spark.driver.port')
+
+# Number of join partitions
+num_partitions = spark.conf.get('spark.sql.shuffle.partitions')
+
+# Show the results
+print("Name: %s" % app_name)
+print("Driver TCP port: %s" % driver_tcp_port)
+print("Number of partitions: %s" % num_partitions)
+```
+- Cluster Types
+  - Single node
+  - Standalone
+  - Managed
+    - YARN
+    - Mesos
+    - Kubernetes
+- Driver
+  - Task assignment
+  - Result consolidation
+  - Shared data access
+  - Tips
+    - Driver node should have double the memory of the worker
+    - Fast local storage helpful
+- Woker
+  - Runs actual tasks
+  - Recommendations
+    - More worker nodes are often better than larger workers
+    - Test to find the balance
+    - Fast local storage helpful
 
 ## Performance improvements
+- shuffling : moving data around to various workers to complete a task
+- how to limit shuffling?
+  - Limit use of `.repartition(num_partitions)`
+    - Use `.coalesce(num_partitions)` instead
+  - Use care when calling `.join()`
+  - Use `.broadcast()`
+  - May not need to limit it
+- Show the query plan : `df.explain()`
+- Broadcasting
+  - provides a copy of an object to each worker
+  - prevents undue / excess communication between nodes
+  - can drastically speed up `.join()` operations
+  - join할 때, 그냥 하는 것과 비교해보니 더 빠름
+
+```python
+from pyspark.sql.functions import broadcast
+combined_df = df1.join(broadcast(df2))
+```
 
 # Complex processing and data pipelines
+## Introduction to data pipelines
+- data pipeline
+  - input -> transformation -> output -> validation -> analysis
+  - formally 정해진 것은 없다.
+
+## Data handling techniques
+- spark's csv parser
+  - 알아서 blank line은 없애준다
+  - 아래처럼 comment를 없애는 것도 가능
+    - `spark.read.csv('sample.csv', comment='#')`
+
+## Data validation
+- verifying that a dataset compiles with the expected format
+  - number of row , col
+  - data types
+  - complex validation rules
+
+## Final analysis and delivery
+- calculations using UDF
+  - `df.withColumn('avg', (df.total_sales / df.sales_count))`
+  - `df.withColumn('avg', df.width * df.length)`
