@@ -32,13 +32,5 @@
   - SQL 
 
 ## 가짜연구소 3기 Data Engineering Study
-- Introduction
-- Streamlined Data Ingestion with Pandas
-- Writing Efficient Python Code
-- Writing Functions in Python
-- Introduction to Shell
-- Data Processing in Shell
-- Introduction to Bash Scripting
-- Unit Testing for Data Science in Python
-  - [unit-test-practice-with-travis](https://github.com/minsoo9506/unit-test-practice)
-- OOP in Python
+
+## Docker
